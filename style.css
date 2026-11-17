@@ -564,3 +564,58 @@ grid-template-columns: 1fr;
     border: 1.5px solid var(--dark);
     white-space: nowrap;
 }
+/* ЗАЩИТА ОТ РАСПЛЫВАНИЯ НА ВСЕХ ТЕЛЕФОНАХ */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Адаптивные заголовки, которые не вылезают за края экрана */
+.retro-title {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+    word-break: break-word;
+}
+
+.section-title {
+    font-size: clamp(1.15rem, 5vw, 1.5rem);
+    word-break: break-word;
+}
+
+/* Запасной плотный фон для старых телефонов, где не работает размытое стекло */
+@supports not (backdrop-filter: blur(10px)) {
+    .glass-card, .glass-player {
+        background: rgba(255, 255, 255, 0.92);
+    }
+}
+
+/* Фикс стикеров и отступов на узких экранах (iPhone SE, старые Android) */
+@media (max-width: 480px) {
+    .container {
+        padding: 16px 12px;
+    }
+    .glass-card {
+        padding: 32px 14px;
+        border-radius: 24px;
+    }
+    .main-photo-wrapper {
+        width: 220px;
+        height: 270px;
+    }
+    .bunny-bl {
+        left: -10px;
+        width: 58px;
+    }
+    .cat-br {
+        right: -10px;
+        width: 58px;
+    }
+    .flower-tl, .sun-tr {
+        width: 58px;
+    }
+    .map-badge {
+        font-size: 0.72rem;
+        padding: 6px 10px;
+        white-space: normal;
+        width: 90%;
+    }
+}
